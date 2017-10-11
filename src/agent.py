@@ -12,35 +12,31 @@ class ApiAi(object):
 
     session_id = uuid.uuid4().hex
 
-    def __init__(self, url='https://api.api.ai/v1/query', client_access_token=None, headers={},
-                 api_versioning='20150910', language='en', timezone='Asia/Kolkata'):
+    def __init__(self, **kwargs):
         """
-        Create Session: create a HTTP session to a server
+        Create a HTTP session to a server
+        :param url: API.AI base url
+        :param client_access_token: client access token
+        :param api_version: API version
+        :param language: default locale language
+        :param timezone: Current timezone
         """
-        self.url = url
+        self.url = kwargs.get('query', 'https://api.api.ai/v1/')
+        self.client_access_token = kwargs.get('client_access_token', '')
+        self.api_version = kwargs.get('api_version', '20150910')
+        self.language = kwargs.get('language', 'en')
+        self.timezone = kwargs.get('timezone', 'Asia/Kolkata')
+
+        # Allow different speech recognition methods to be selected
+        # See https://pypi.python.org/pypi/SpeechRecognition/
+        self.recognizer_function = kwargs.get(
+            'recognizer_function', 'recognize_sphinx'
+        )
 
         self.headers = {
-            'Authorization': 'Bearer ' + client_access_token,
+            'Authorization': 'Bearer ' + self.client_access_token,
         }
 
-        self.session.headers.update(headers)
+        self.session.headers.update(self.headers)
         self.session.mount('http://', requests.adapters.HTTPAdapter())
         self.session.mount('https://', requests.adapters.HTTPAdapter())
-
-        self.api_versioning = api_versioning
-        self.language = language
-        self.timezone = timezone
-
-
-
-
-
-# if __name__ == '__main__':
-#     # demo agent access token: e5dc21cab6df451c866bf5efacb40178
-#     client_access_token = 'e5dc21cab6df451c866bf5efacb40178'
-#
-#     api_ai = ApiAi(client_access_token);
-#     response = api_ai.get_response('how are you')
-#     print(response)
-#     response = api_ai.get_response('howz the weather today')
-#     print(response)
