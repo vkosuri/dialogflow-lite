@@ -14,19 +14,19 @@ Most of the general information can found here https://api.ai/docs/reference/age
 
 ## Using Access Tokens
 
-The entire package uses based on User access token, to get token
-
-![apiai access token](https://api.ai/docs/images/references/api-reference/001-authentication.png)
-
-*CREDITS*: https://API.AI
+The entire package uses based on User access token, read the documentation how to get
 
 ## Authorization with the value Bearer {access_token}.
 
 For example:
 
+``` Python
 Authorization: Bearer YOUR_ACCESS_TOKE
+```
 
 ## Protocol Version
 
 ``20140910`` used as protocol version in this repo
 
+## License
+This project licensed under [MIT](./LICENSE)
