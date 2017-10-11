@@ -4,6 +4,7 @@ from .agent import ApiAi
 
 class Query(ApiAi):
     def query(self, text):
+        query_url = self.uri + '/query'
         params = (
             ('v', self.api_versioning),
             ('query', text),
@@ -17,6 +18,6 @@ class Query(ApiAi):
             for msg in result['result']['fulfillment']['messages']:
                 responses.append(msg['speech'])
         else:
-            print('Failed to response from: ' + self.url)
+            print('Failed to response from: ' + query_url)
 
         return responses
