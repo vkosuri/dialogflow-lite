@@ -23,6 +23,7 @@ class ApiAi(object):
         """
         self.url = kwargs.get('query', 'https://api.api.ai/v1/')
         self.client_access_token = kwargs.get('client_access_token', '')
+        self.developer_access_token = kwargs.get('developer_access_token', '')
         self.api_version = kwargs.get('api_version', '20150910')
         self.language = kwargs.get('language', 'en')
         self.timezone = kwargs.get('timezone', 'Asia/Kolkata')
