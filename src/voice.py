@@ -1,10 +1,10 @@
 
-from .agent import ApiAi
+from .agent import Dialogflow
 import speech_recognition
 import subprocess
 
 
-class Voice(ApiAi):
+class Voice(Dialogflow):
     def speech_recognizer(self):
         # Start jack control
         self.attempt_jack_control_start()

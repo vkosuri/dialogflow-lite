@@ -1,16 +1,16 @@
 
-# API.AI Agent
+# Dialogflow Agent
 
-API.AI is python an [requests](http://docs.python-requests.org/en/master/) agent to [API.AI operations](https://api.ai/)
+Dialogflow is an python [requests](http://docs.python-requests.org/en/master/) agent to comunicate with [Dialogflow](https://dialogflow.com/)
 
 ## General Information
-Most of the general information can found here https://api.ai/docs/reference/agent/
+Most of the general information can found here https://dialogflow.com/docs/reference/agent/
 
-1. [query](https://api.ai/docs/reference/agent/query)
-2. [entities](https://api.ai/docs/reference/agent/entities)
-3. [userEntities](https://api.ai/docs/reference/agent/userentities)
-4. [intents](https://api.ai/docs/reference/agent/intents)
-5. [contexts](https://api.ai/docs/reference/agent/contexts)
+1. [query](https://dialogflow.com/docs/reference/agent/query)
+2. [entities](https://dialogflow.com/docs/reference/agent/entities)
+3. [userEntities](https://dialogflow.com/docs/reference/agent/userentities)
+4. [intents](https://dialogflow.com/docs/reference/agent/intents)
+5. [contexts](https://dialogflow.com/docs/reference/agent/contexts)
 
 ## Using Access Tokens
 

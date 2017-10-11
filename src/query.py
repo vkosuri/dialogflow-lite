@@ -1,9 +1,14 @@
 
-from .agent import ApiAi
+from .agent import Dialogflow
 
 
-class Query(ApiAi):
+class Query(Dialogflow):
     def query(self, text):
+        """
+        Takes natural language text and information as query parameters and returns information as JSON.
+        :param text: Input text
+        :return: JSON response
+        """
         query_url = self.uri + '/query'
         params = (
             ('v', self.api_versioning),

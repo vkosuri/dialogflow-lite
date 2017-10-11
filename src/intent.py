@@ -1,8 +1,8 @@
 
-from .agent import ApiAi
+from .agent import Dialogflow
 
 
-class Intent(ApiAi):
+class Intent(Dialogflow):
     def get_intents(self):
         pass
 

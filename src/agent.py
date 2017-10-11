@@ -3,7 +3,7 @@ import requests
 import uuid
 
 
-class ApiAi(object):
+class Dialogflow(object):
     # create session
     session = requests.Session()
 
@@ -21,7 +21,7 @@ class ApiAi(object):
         :param language: default locale language
         :param timezone: Current timezone
         """
-        self.url = kwargs.get('query', 'https://api.api.ai/v1/')
+        self.url = kwargs.get('query', 'https://api.dialogflow.com/v1/')
         self.client_access_token = kwargs.get('client_access_token', '')
         self.developer_access_token = kwargs.get('developer_access_token', '')
         self.api_version = kwargs.get('api_version', '20150910')

@@ -1,8 +1,8 @@
 
-from .agent import ApiAi
+from .agent import Dialogflow
 
 
-class Entities(ApiAi):
+class Entities(Dialogflow):
     def get_entities(self):
         """
         Retrieves a list of all entities for the agent.
