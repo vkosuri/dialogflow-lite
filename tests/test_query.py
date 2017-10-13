@@ -133,6 +133,6 @@ class QueryGetSuccessWithoutResponseTests(TestCase):
 
     def test_validate_exception(self):
         try:
-            response = self.dialog.text_request('how are you')
+            self.dialog.text_request('how are you')
         except KeyError:
             self.assertEqual("KeyError: 'messages'", KeyError.__cause__)

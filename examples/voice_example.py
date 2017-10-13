@@ -35,6 +35,7 @@ def attempt_jack_control_start():
             RuntimeWarning
         )
 
+
 recognizer_function = 'recognize_sphinx'
 
 """

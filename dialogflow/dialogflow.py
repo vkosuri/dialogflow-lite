@@ -146,4 +146,3 @@ class Dialogflow(object):
         code = response['status']['code']
         if code not in [HTTP_200_SUCCESS, HTTP_200_DEPRECATED]:
             raise DialogflowQueryException('{} status code received'.format(code))
-
