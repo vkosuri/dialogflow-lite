@@ -2,7 +2,7 @@
 # Dialogflow Agent
 
 [![Package Version](https://img.shields.io/pypi/v/dialogflow.svg)](https://pypi.python.org/pypi/dialogflow/)
-[![Build Status](https://travis-ci.org/vkosuri/dialogflow.svg?branch=master)](https://travis-ci.org/vkosuri/dialogflow)
+[![Build Status](https://travis-ci.org/vkosuri/Dialogflow.svg?branch=master)](https://travis-ci.org/vkosuri/Dialogflow)
 
 Dialogflow is an python [requests](http://docs.python-requests.org/en/master/) agent to comunicate with [Dialogflow](https://dialogflow.com/)
 
