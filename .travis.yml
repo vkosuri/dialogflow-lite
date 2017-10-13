@@ -14,12 +14,11 @@ before_install:
   - sudo apt-get install -y jackd2
 
 install:
-  - pip install coveralls flake8
+  - pip install coveralls
   - pip install -r requirements.txt
   - pip install -r dev-requirements.txt
 
 script:
-  - flake8
   - nosetests  --with-coverage --cover-package=dialogflow
 
 after_success:
