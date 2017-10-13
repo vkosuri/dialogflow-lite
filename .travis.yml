@@ -1,0 +1,25 @@
+language: python
+
+python:
+  - '3.4'
+  - '2.7'
+
+env:
+  - DBUS_SESSION_BUS_ADDRESS=/dev/null
+  - DISPLAY=:99.0
+
+before_install:
+  - sudo apt-get install -y espeak python-espeak
+  - sudo apt-get install -y dbus python-dbus python-dbus-dev
+  - sudo apt-get install -y jackd2
+
+install:
+  - pip install coveralls flake8
+  - pip install -r requirements.txt
+
+script:
+  - flake8
+  - nosetests  --with-coverage --cover-package=dialogflow
+
+after_success:
+  - coveralls
