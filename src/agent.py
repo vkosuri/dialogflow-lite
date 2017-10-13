@@ -6,10 +6,8 @@ import uuid
 class Dialogflow(object):
     # create session
     session = requests.Session()
-
     # Headers
     headers = {}
-
     session_id = uuid.uuid4().hex
 
     def __init__(self, **kwargs):
@@ -23,6 +21,9 @@ class Dialogflow(object):
         self.language = kwargs.get('language', 'en')
         self.timezone = kwargs.get('timezone', 'Asia/Kolkata')
         verify = kwargs.get('verify', False)
+
+        if not self.client_access_token:
+            raise self. DialogflowQueryException('Must have client access token to proceed.')
 
         # Allow different speech recognition methods to be selected
         # See https://pypi.python.org/pypi/SpeechRecognition/
@@ -43,7 +44,25 @@ class Dialogflow(object):
 
         self.session.url = self.base_url
 
+    def text_request(self, text):
+        raise NotImplementedError("Must override text_request")
+
+    def voice_request(self):
+        raise NotImplementedError("Must override voice_request")
+
     class HTTPStatusException(Exception):
+        """
+        Exception raised when unexpected non-success HTTP
+        status codes are returned in a response.
+        """
+
+        def __init__(self, value):
+            self.value = value
+
+        def __str__(self):
+            return repr(self.value)
+
+    class DialogflowQueryException(Exception):
         """
         Exception raised when unexpected non-success HTTP
         status codes are returned in a response.
