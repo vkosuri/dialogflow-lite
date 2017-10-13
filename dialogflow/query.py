@@ -1,5 +1,5 @@
 
-from .agent import Dialogflow
+from .dialogflow import Dialogflow
 from .status import HTTP_200_SUCCESS, HTTP_200_DEPRECATED
 
 import speech_recognition
