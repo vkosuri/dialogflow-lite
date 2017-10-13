@@ -1,7 +1,9 @@
-from unittest import TestCase
+#!/usr/bin/env python
+
+from dialogflow import Dialogflow
+from dialogflow import dialogflow
 from mock import Mock
-from src.query import Query
-from src import agent
+from unittest import TestCase
 
 
 class MockResponse(object):
@@ -55,23 +57,82 @@ def mock_get_response(*args, **kwargs):
     return endpoints[url]
 
 
-class QueryTests(TestCase):
+def mock_get_without_response(*args, **kwargs):
+    """
+    Usually this will happen if we used dummy client access token
+    """
+    url = kwargs['url']
+    endpoints = {
+        'https://api.dialogflow.com/v1/query': MockResponse(200, {
+            'id': 'b75bb996-cee3-41cd-a6eb-dd081c766fe0',
+            'timestamp': '2017-10-13T19:08:46.599Z',
+            'lang': 'en',
+            'sessionId': '8c3d0ff681a1460ba6ed45dec4eda2fb',
+            'result': {
+                'contexts': [],
+                'score': 0.0,
+                'fulfillment': {
+                    'speech': ''
+                },
+                'resolvedQuery': 'how are you',
+                'metadata': {},
+                'source': 'agent'
+            },
+            'status': {
+                'errorType': 'success',
+                'code': 200
+            }
+        })
+    }
+    return endpoints[url]
+
+
+class QueryGetSuccessTests(TestCase):
     def setUp(self):
-        super(QueryTests, self).setUp()
-        self.query = Query(
+        super(QueryGetSuccessTests, self).setUp()
+        self.dialog = Dialogflow(
             url='https://api.dialogflow.com/v1',
             client_access_token='adaf757eb6714a4d',
         )
-        agent.requests.Session.get = Mock(side_effect=mock_get_response)
+        dialogflow.requests.Session.get = Mock(side_effect=mock_get_response)
 
     def test_validate_status_code_200(self):
-        response = self.query.query('my name is Sam and I live in Paris')
+        response = self.dialog._query('my name is Sam and I live in Paris')
 
         try:
-            self.query._validate_status_code(response)
-        except Query.HTTPStatusException:
+            self.dialog._validate_status_code(response)
+        except Dialogflow.DialogflowQueryException:
             self.fail('Test raised HTTPStatusException unexpectedly!')
 
-    def test_validate_response(self):
-        responses = self.query.text_request('my name is Sam and I live in Paris')
+    def test_validate_response_text(self):
+        responses = self.dialog.text_request('my name is Sam and I live in Paris')
         self.assertEqual(responses[0], 'Hi Sam! Nice to meet you!')
+
+    def test_validate_response(self):
+        response = self.dialog._query('my name is Sam and I live in Paris')
+        self.assertEqual(response['sessionId'], '4b6a6779-b8ea-4094-b2ed-a302ba201815')
+        self.assertEqual(response['result']['score'], 1)
+        self.assertEqual(response['result']['metadata']['intentName'], 'greetings')
+
+
+class QueryGetSuccessWithoutResponseTests(TestCase):
+    def setUp(self):
+        super(QueryGetSuccessWithoutResponseTests, self).setUp()
+        self.dialog = Dialogflow(
+            url='https://api.dialogflow.com/v1',
+            client_access_token='adaf757eb6714a4d',
+        )
+        dialogflow.requests.Session.get = Mock(side_effect=mock_get_without_response)
+
+    def test_validate_sucess_without_response(self):
+        response = self.dialog._query('how are you')
+        try:
+            self.dialog._validate_status_code(response)
+        except Dialogflow.DialogflowQueryException:
+            self.fail('Test raised HTTPStatusException unexpectedly!')
+
+    def test_validate_exception(self):
+        try:
+            response = self.dialog.text_request('how are you')
+        except KeyError:
+            self.assertEqual("KeyError: 'messages'", KeyError.__cause__)
