@@ -58,20 +58,20 @@ def mock_get_response(*args, **kwargs):
 class QueryTests(TestCase):
     def setUp(self):
         super(QueryTests, self).setUp()
-        self.dialogflow = Query(
+        self.query = Query(
             url='https://api.dialogflow.com/v1',
             client_access_token='adaf757eb6714a4d',
         )
         agent.requests.Session.get = Mock(side_effect=mock_get_response)
 
     def test_validate_status_code_200(self):
-        response = self.dialogflow.query('my name is Sam and I live in Paris')
+        response = self.query.query('my name is Sam and I live in Paris')
 
         try:
-            self.dialogflow._validate_status_code(response)
+            self.query._validate_status_code(response)
         except Query.HTTPStatusException:
             self.fail('Test raised HTTPStatusException unexpectedly!')
 
     def test_validate_response(self):
-        responses = self.dialogflow.get_response_message('my name is Sam and I live in Paris')
+        responses = self.query.text_request('my name is Sam and I live in Paris')
         self.assertEqual(responses[0], 'Hi Sam! Nice to meet you!')
