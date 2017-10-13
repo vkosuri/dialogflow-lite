@@ -1,7 +1,28 @@
 
 # Dialogflow Agent
 
+[![Package Version](https://img.shields.io/pypi/v/dialogflow.svg)](https://pypi.python.org/pypi/dialogflow/)
+[![Build Status](https://travis-ci.org/vkosuri/dialogflow.svg?branch=master)](https://travis-ci.org/vkosuri/dialogflow)
+
 Dialogflow is an python [requests](http://docs.python-requests.org/en/master/) agent to comunicate with [Dialogflow](https://dialogflow.com/)
+
+## Speech recognition
+
+The speech recognition used in this module is done using Anthony Zhang's [SpeechRecognition](https://github.com/Uberi/speech_recognition) library for Python.
+
+## Speech synthesis
+
+Speech synthesis in this project is done using espeak. Note: For Mac users, the adapter will use Mac's built-in say command.
+
+## Installation
+
+``` Bash
+pip install dialogflow
+```
+
+## Examples
+
+See the [examples](./examples) directory in the GitHub repo.
 
 ## General Information
 Most of the general information can found here https://dialogflow.com/docs/reference/agent/
