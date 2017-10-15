@@ -73,7 +73,6 @@ class Dialogflow(object):
     def text_request(self, text):
         responses = []
         result = self._query(text)
-        print(result)
         try:
             if result['status']['code'] == HTTP_200_SUCCESS:
                 for msg in result['result']['fulfillment']['messages']:
