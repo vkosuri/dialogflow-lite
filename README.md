@@ -1,8 +1,8 @@
 
 # Dialogflow Agent
 
-[![Package Version](https://img.shields.io/pypi/v/dialogflow.svg)](https://pypi.python.org/pypi/dialogflow/)
-[![Build Status](https://travis-ci.org/vkosuri/Dialogflow.svg?branch=master)](https://travis-ci.org/vkosuri/Dialogflow)
+[![Package Version](https://img.shields.io/pypi/v/dialogflow-lite.svg)](https://pypi.python.org/pypi/dialogflow-lite/)
+[![Build Status](https://travis-ci.org/vkosuri/dialogflow-lite.svg?branch=master)](https://travis-ci.org/vkosuri/dialogflow-lite)
 
 Dialogflow is an python [requests](http://docs.python-requests.org/en/master/) agent to comunicate with [Dialogflow](https://dialogflow.com/)
 
@@ -17,7 +17,7 @@ Speech synthesis in this project is done using espeak. Note: For Mac users, the 
 ## Installation
 
 ``` Bash
-pip install dialogflow
+pip install dialogflow-lite
 ```
 
 ## Examples

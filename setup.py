@@ -13,22 +13,22 @@ requirements = req.readlines()
 req.close()
 
 setup(
-    name='dialogflow',
+    name='dialogflow-lite',
     version=version,
-    url='https://github.com/vkosuri/Dialogflow',
-    description='Python implementation for Dialogflow .',
+    url='https://github.com/vkosuri/dialogflow-lite',
+    description='A light-weight agent for Dialogflow.',
     author=author,
     author_email=author_email,
     packages=[
         'dialogflow'
     ],
-    package_dir={'dialogflow': 'dialogflow'},
+    package_dir={'dialogflow-lite': 'dialogflow'},
     include_package_data=True,
     install_requires=requirements,
     license='MIT',
     zip_safe=True,
     platforms=['any'],
-    keywords=['dialogflow', 'api.ai', 'dialogflow python', 'bot', 'speech', 'voice'],
+    keywords=['dialogflow', 'dialogflow-lite', 'api.ai', 'dialogflow python', 'bot', 'speech', 'voice'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Intended Audience :: Developers',
