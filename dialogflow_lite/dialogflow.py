@@ -2,7 +2,7 @@
 
 from requests.adapters import HTTPAdapter
 from requests.packages import urllib3
-from .status import HTTP_200_SUCCESS, HTTP_200_DEPRECATED
+from dialogflow_lite.status import HTTP_200_SUCCESS, HTTP_200_DEPRECATED
 
 import requests
 import speech_recognition
