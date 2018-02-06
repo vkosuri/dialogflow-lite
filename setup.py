@@ -4,9 +4,9 @@ from setuptools import setup
 
 
 # Dynamically retrieve the version information from the Dialogflow module
-version = __import__('dialogflow').__version__
-author = __import__('dialogflow').__author__
-author_email = __import__('dialogflow').__email__
+version = __import__('dialogflow_lite').__version__
+author = __import__('dialogflow_lite').__author__
+author_email = __import__('dialogflow_lite').__email__
 
 req = open('requirements.txt')
 requirements = req.readlines()
@@ -19,14 +19,9 @@ setup(
     description='A light-weight agent for Dialogflow.',
     author=author,
     author_email=author_email,
-    packages=[
-        'dialogflow-lite'
-    ],
-    package_dir={'dialogflow-lite': 'dialogflow-lite'},
-    include_package_data=True,
+    packages=['dialogflow_lite'],
     install_requires=requirements,
     license='MIT',
-    zip_safe=True,
     platforms=['any'],
     keywords=['dialogflow', 'dialogflow-lite', 'api.ai', 'dialogflow python', 'bot', 'speech', 'voice'],
     classifiers=[
@@ -49,3 +44,8 @@ setup(
     test_suite='tests',
     tests_require=[]
 )
+
+""" From now on use this approach
+python setup.py sdist upload
+git tag -a 1.2.3 -m 'version 1.2.3'
+git push --tags"""
