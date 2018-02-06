@@ -20,9 +20,9 @@ setup(
     author=author,
     author_email=author_email,
     packages=[
-        'dialogflow'
+        'dialogflow-lite'
     ],
-    package_dir={'dialogflow-lite': 'dialogflow'},
+    package_dir={'dialogflow-lite': 'dialogflow-lite'},
     include_package_data=True,
     install_requires=requirements,
     license='MIT',
