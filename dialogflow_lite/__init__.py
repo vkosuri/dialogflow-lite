@@ -1,5 +1,5 @@
 """
-API Ai python requests package
+Dialogflow python requests package
 """
 import sys
 
