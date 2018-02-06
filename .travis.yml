@@ -19,7 +19,7 @@ install:
   - pip install -r dev-requirements.txt
 
 script:
-  - nosetests  --with-coverage --cover-package=dialogflow
+  - nosetests  --with-coverage --cover-package=dialogflow_lite
 
 after_success:
   - coveralls

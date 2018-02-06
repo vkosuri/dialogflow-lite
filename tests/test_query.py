@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
-from dialogflow import Dialogflow
-from dialogflow import dialogflow
+from dialogflow_lite.dialogflow import Dialogflow
+from dialogflow_lite import dialogflow
 from mock import Mock
 from unittest import TestCase
 
